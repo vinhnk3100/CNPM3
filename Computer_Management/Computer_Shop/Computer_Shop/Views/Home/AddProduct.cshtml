@@ -1,0 +1,107 @@
+﻿@model Computer_Shop.Models.Product
+
+@{
+    ViewBag.Title = "AddProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<strong style="font-size:80px;font-family:'Times New Roman';">Add Product</strong>
+
+@using (Html.BeginForm("AddProduct", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group" style="float:right;margin-right:500px">
+            @Html.LabelFor(model => model.Image1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile1" required />
+            </div>
+        </div>
+
+        <div class="form-group" style="float:right;margin-right:500px">
+            @Html.LabelFor(model => model.Image2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile2" required />
+            </div>
+        </div>
+
+        <div class="form-group" style="float:right;margin-right:500px">
+            @Html.LabelFor(model => model.Image3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile3" required />
+            </div>
+        </div>
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label" style="margin-left:80px">Product Name</div>
+            <div class="col-md-4">
+                <input style="font-size:26px;font-family:'Times New Roman';margin-left:40px;border:2px solid grey" class="form-control text-box single-line" id="Product_Name" name="Product_Name" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Product_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label col-md-2" style="margin-left:80px">Made in</div>
+            <div class="col-md-4">
+                <input style="font-size: 26px;font-family: 'Times New Roman';margin-left: 40px;border:2px solid grey" class="form-control text-box single-line" id="Made_in" name="Made_in" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Made_in, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label col-md-2" style="margin-left:80px">Brand</div>
+            <div class="col-md-4">
+                <input style="font-size:26px;font-family:'Times New Roman';margin-left:40px;border:2px solid grey" class="form-control text-box single-line" id="Brand" name="Brand" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label col-md-2" style="margin-left: 80px">Quantity</div>
+            <div class="col-md-4">
+                <input style="font-size:26px;font-family:'Times New Roman';margin-left:40px;border:2px solid grey" class="form-control text-box single-line" id="Quantity" name="Quantity" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label" style="margin-left:80px">Warranty Period</div>
+            <div class="col-md-4">
+                <input style="font-size: 26px;font-family: 'Times New Roman';margin-left: 40px;border: 2px solid grey" class="form-control text-box single-line" id="Warranty_Period" name="Warranty_Period" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Warranty_Period, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label col-md-2" style="margin-left:80px">Price</div>
+            <div class="col-md-4">
+                <input style="font-size:26px;font-family:'Times New Roman';margin-left:40px;border:2px solid grey" class="form-control text-box single-line" id="Price" name="Price" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group" style="font-size:40px;font-family:'Times New Roman'">
+            <div class="control-label col-md-2" style="margin-left:80px">Description</div>
+            <div class="col-md-10">
+                <textarea rows="10" style="font-size: 26px; font-family: 'Times New Roman';border:3px solid black" class="form-control text-box single-line" id="Description" name="Description" type="text" value=""></textarea>
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" style="font-size:30px;border:2px solid black" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

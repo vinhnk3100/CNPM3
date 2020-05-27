@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Computer_Shop.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center;font-size:60px">Customer</h2>
+<br />
+<table border="5" cellpadding="10" cellspacing="5" align="center">
+    <tr style="font-size:200%;text-align:center;font-family:'Times New Roman'">
+        <td>
+            @Html.DisplayNameFor(model => model.Customer_ID)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Customer_Name)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Phonenumber)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Email)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Address)
+        </td>
+        <td>
+            Action
+        </td>
+    </tr>
+
+    @foreach (Computer_Shop.Models.Customer x in Model)
+    {
+<tr style="font-size:20px">
+    <td>@x.Customer_ID</td> 
+    <td>
+        @x.Customer_Name
+    </td>
+    <td>
+        @x.Phonenumber
+    </td>
+    <td>
+        @x.Email
+    </td>
+    <td>
+        @x.Address
+    </td>
+    @if (Session["role"] == "admin")
+    {
+            <td>@Html.ActionLink("Delete", "DeleteCustomer", new { cID = x.Customer_ID }) <strong>|</strong>
+                @Html.ActionLink("View & Edit", "ViewCustomer", new { cID = x.Customer_ID })
+            </td>
+    }
+</tr>
+    }
+
+</table>
+<br />

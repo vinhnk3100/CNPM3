@@ -1,0 +1,120 @@
+﻿@model Computer_Shop.Models.Order
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @using (Html.BeginForm())
+
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Order</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <strong class="control-label col-md-2" style="font-size:24px">
+                Employee ID
+            </strong>
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(model => model.UserID, (IEnumerable<SelectListItem>)ViewBag.AccountList, "", new { @class = "form-control"})*@
+                <input class="form-control text-box single-line" id="UserID" name="UserID" type="text" value="@Session["uid"]" readonly style="font-size:24px">
+                @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong class="control-label col-md-2" style="font-size:24px">
+                Order Create Date
+            </strong>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Create_Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Create_Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <strong class="control-label col-md-2" style="font-size:24px">
+                Customer ID
+            </strong>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CustomerID, (IEnumerable<SelectListItem>)ViewBag.CustomerList, "", new { @class = "form-control" })
+                @*<input class="form-control text-box single-line" id="CustomerID" name="CustomerID" type="text" value="" style="font-size:24px">*@
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong class="control-label col-md-2" style="font-size:24px"> 
+                Shipping Address
+            </strong>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Shipping_Address, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Shipping_Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong class="control-label col-md-2" style="font-size:24px">
+                Payment Method
+            </strong>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Payment_Method, new { htmlAttributes = new { @min = "1", @max = "2", @class="col-md-2" } })
+                <div style="font-size:24px;color:dodgerblue">
+                    1 : Credit Card <p></p>
+                    <img src="https://vtcgame.vn/images/ImgBank/logo_visa.png"/>
+                    <img src="https://vtcgame.vn/images/ImgBank/logo_master.png"/>
+                    <img src="https://vtcgame.vn/images/ImgBank/paypal.jpg"/>
+                </div>
+                <br />
+                <div style="font-size:24px;color:mediumpurple">
+                    2 : Cash on Delivery (COD)
+                </div>
+                @Html.ValidationMessageFor(model => model.Payment_Method, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <strong class="control-label col-md-2" style="font-size:24px">
+                Order Status
+            </strong>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @min = "1", @max = "4", @class = "col-md-2" } })
+                <div style="font-size:24px">
+                    1 : Received the order
+                    <br />
+                    2 : Packing
+                    <br />
+                    3 : On delivery
+                    <br />
+                    4 : Arrived
+                </div>
+
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</body>
+</html>
+
+
+

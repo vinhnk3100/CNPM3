@@ -1,0 +1,127 @@
+﻿@model Computer_Shop.Models.Product
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="font-size:60px">Product information</h1>
+
+
+@using (Html.BeginForm("Product", "Home", FormMethod.Post, new { enctype = "multiple/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+
+<div class="form-horizontal" style="font-size:36px">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Product_ID)
+
+    <div id="slides-shop" class="cover-slides slides-side form-group col-lg-4" style="float:right">
+        <ul class="slides-container">
+            <img class="img-fluid" src="@Url.Content(Model.Image1)"/>
+            <img class="img-fluid" src="@Url.Content(Model.Image2)"/>
+            <img class="img-fluid" src="@Url.Content(Model.Image3)"/>
+        </ul>
+        <div class="slides-navigation fa-color">
+            <a class="next"><i class="fa fa-angle-right" aria-hidden="true" ></i></a>
+            <a class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+        </div>
+    </div>
+
+    <div class="form-group" style="float:right;margin-top:80px">
+        <div>
+            <a class="btn hvr-hover1" href="#">
+                <img class="img-fluid" src="@Url.Content(Model.Image2)" width="180" height="150" />
+            </a>
+            @Html.ValidationMessageFor(model => model.Image2, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <a class="btn hvr-hover1" href="#">
+                <img class="img-fluid" src="@Url.Content(Model.Image3)" width="180" height="150" />
+            </a>
+            @Html.ValidationMessageFor(model => model.Image3, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <a class="btn hvr-hover1" href="#">
+                <img class="img-fluid" src="@Url.Content(Model.Image1)" width="180" height="150" />
+            </a>
+            @Html.ValidationMessageFor(model => model.Image1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Product Name</strong>
+        <div class="col-md-4 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.ValueFor(model => model.Product_Name)
+            @Html.ValidationMessageFor(model => model.Product_Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Made in</strong>
+        <div class="col-md-4 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.ValueFor(model => model.Made_in)
+            @Html.ValidationMessageFor(model => model.Made_in, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Brand</strong>
+        <div class="col-md-4 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.ValueFor(model => model.Brand)
+            @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Quantity</strong>
+        <div class="col-md-4 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.ValueFor(model => model.Quantity)
+            @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Warranty Period</strong>
+        <div class="col-md-4 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.ValueFor(model => model.Warranty_Period)
+            @Html.ValidationMessageFor(model => model.Warranty_Period, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Price $</strong>
+        <div class="col-md-4 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.ValueFor(model => model.Price) Đ
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong class="control-label col-md-2">Description</strong>
+        <div class="col-md-12 form-control" style="font-size:36px;font-family:'Times New Roman'">
+            @Html.Raw(Model.Description.Replace(Environment.NewLine, "<br/>"))
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10" style="text-align:center">
+            <a href="/Home/Shop" class="btn" style="font-size:40px;border:2px solid black;border-radius:6px">
+                <---- Back to Shop ---->
+            </a>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

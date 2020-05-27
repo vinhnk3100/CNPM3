@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Computer_Shop.Models.DetailsOrderProductsOrder>
+@{
+    ViewBag.Title = "DetailsOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center;font-size:50px">Order Details</h2>
+
+
+<style>
+    .Delbtn {
+        color: red
+    }
+
+    .report:hover {
+        opacity: 0.6
+    }
+</style>
+
+<table border="5" cellpadding="10" cellspacing="5" align="center">
+
+    <tr style="font-size:200%;text-align:center;font-family:'Times New Roman'">
+        <br>
+        <td>DetailsOrder ID</td>
+        <td>Product Name</td>
+        <td>Product ID</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td>Image</td>
+        <td>Provisional price</td>
+        @if (Session["role"] == "admin" || Session["role"] == "Salesman")
+        {
+            <td>Action</td>
+        }
+        </br>
+    </tr>
+
+    @{
+        foreach (var item in Model)
+        {
+            <tr style="font-size:24px" class="tr">
+                <td>@item.DetailsOrderID</td>
+                <td>@item.Product_Name</td>
+                <td>@item.Product_ID</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+                <td>
+                <img src="@item.Image1" style="height:100px;width:100px;"/>
+                </td>
+                <td>@(item.Price*item.Quantity)</td>
+                @if (Session["role"] == "admin")
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteOrderDetails", new { doid = item.DetailsOrderID }, new { @class = "Delbtn" }) <strong>|</strong>
+                        @Html.ActionLink("ViewProduct", "Product", new { id = item.Product_ID }, new { @class = "Delbtn" })
+                    </td>
+                }
+                else if (Session["role"] == "Salesman")
+                {
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteOrderDetails", new { doid = item.DetailsOrderID }, new { @class = "Delbtn" }) <strong>|</strong>
+                        @Html.ActionLink("ViewProduct", "Product", new { id = item.Product_ID }, new { @class = "Delbtn" }) 
+                    </td>
+                }
+
+            </tr>
+        }
+    }
+</table>
+
+<br />
+
+<div class="col-md-4" style="text-align:center">
+    <a class="hvr-hover1" href="/Home/Order" style="font-size:32px;border:2px solid black;background-color:black;color:white;border-radius:8px">
+        Back to View Order
+    </a>
+</div>
+
+<br />
+
+@*<div style="color:black;text-align:right;font-size:50px;padding-right:15px">
+        <strong>
+            Total Order Price : @Model.Sum(i => i.Price)
+        </strong>
+
+    </div>*@
+
+<br />

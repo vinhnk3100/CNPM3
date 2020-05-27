@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Computer_Shop.Models.AccountEmployee>
+@{
+    ViewBag.Title = "Salesman";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 style="text-align:center;font-size:40px;margin:0px;padding:0px;margin-top:30px">User Management</h1>
+<hr />
+
+<table border="5" cellpadding="10" cellspacing="5" align="center">
+
+    <tr style="font-size:200%;text-align:center;font-family:'Times New Roman'">
+        <br>
+        <td>Employee ID</td>
+        <td>Full Name</td>
+        <td>@Html.DisplayNameFor(model => model.Email)</td>
+        <td>Date of Birth</td>
+        <td>Address</td>
+        <td>Role</td>
+        <td>Mobile</td>
+        @if (Session["role"] == "admin")
+        {
+            <td>Action</td>
+            <td>View Employee</td>
+        }
+        </br>
+
+    </tr>
+    @{
+        foreach (Computer_Shop.Models.AccountEmployee x in Model)
+        {
+                <tr style="font-size:20px">
+                    <td>@x.EmployeeID</td>
+                    <td>@x.FullName</td>
+                    <td>@x.Email</td>
+                    <td>@x.DoB</td>
+                    <td>@x.City</td>
+                    <td style="font-size:24px;color:dodgerblue">Salesman</td>
+                    <td>@x.Mobile</td>
+
+                    @if (Session["role"] == "admin")
+                    {
+                        <td>@Html.ActionLink("Delete", "DeleteUser", new { UserID = x.UserID })</td>
+                    }
+                    <td style="font-size:24px;text-align:center">@Html.ActionLink("View & Edit", "ViewEmployee", new { Eid = x.EmployeeID })</td>
+                </tr>
+            }
+
+        }
+    }
+</table>
+<br />
+

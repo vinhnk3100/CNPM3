@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Computer_Shop.Models.AccountEmployeeCustomerOrder>
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1 style="text-align:center;font-size:40px;margin:0px;padding:0px;margin-top:30px;font-family:'Times New Roman'">Order List</h1>
+<style>
+    .Delbtn {
+        color: red
+    }
+
+    .CreateOrderDetails{
+        color:green;
+    }
+
+    .ViewOrderDetails{
+        color:dodgerblue
+    }
+
+    .EditOrder {
+        color: mediumpurple;
+    }
+
+    .report:hover {
+        opacity: 0.6
+    }
+</style>
+
+<table border="5" cellpadding="10" cellspacing="5" align="center" >
+
+    <tr style="font-size:200%;text-align:center;font-family:'Times New Roman'">
+        <br>
+        <td>Order ID</td>
+        <td>Employee Name</td>
+        <td>Create Date</td>
+        <td>Customer Name</td>
+        <td>Shipping Address</td>
+        <td>Payment Method</td>
+        <td>Status</td>
+        @if (Session["role"] == "admin" || Session["role"] == "Salesman")
+        {
+            <td>Action</td>
+        }
+        </br>
+    </tr>
+
+    @{
+        foreach (var item in Model)
+        {
+        <tr style="font-size:24px" class="tr">
+            <td>@item.OrderID</td>
+            <td>@item.FullName</td>
+            <td>@item.Create_Date</td>
+            <td>@item.Customer_Name</td>
+            <td>@item.Shipping_Address</td>
+            @if (item.Payment_Method.Equals(1))
+            {
+                <td style="font-size:24px;color:dodgerblue">Credit Card</td>
+            }
+            else if (item.Payment_Method.Equals(2))
+            {
+                <td style="font-size:24px;color:mediumpurple">Cash on Delivery (COD)</td>
+            }
+            @if (item.Status.Equals(1))
+            {
+                <td style="font-size:24px;color:green">Received the order</td>
+            }
+            else if (item.Status.Equals(2))
+            {
+                <td style="font-size:24px;color:orangered">Packing</td>
+            }
+            else if (item.Status.Equals(3))
+            {
+                <td style="font-size:24px;color:red">On delivery</td>
+            }
+            else if (item.Status.Equals(4))
+            {
+                <td style="font-size:24px;color:forestgreen">Arrived</td>
+            }
+            @if (Session["role"] == "admin")
+            {
+                <td>
+                    @Html.ActionLink("Delete", "DeleteOrder", new { oid = item.OrderID }, new { @class = "Delbtn" }) <strong>|</strong>
+
+                    <div>
+                        @Html.ActionLink("Create Order Details", "AddDetailsOrder", new { oid = item.OrderID }, new { @class = "CreateOrderDetails" })<strong>|</strong>
+                    </div>
+                    @Html.ActionLink("View Order Details", "DetailsOrder", new { oid = item.OrderID }, new { @class = "ViewOrderDetails" }) <strong>|</strong>
+                    @Html.ActionLink("Edit Order", "EditOrder", new { oid = item.OrderID }, new { @class = "EditOrder" }) <strong>|</strong>
+                </td>
+            }
+            else if (Session["role"] == "Salesman")
+            {
+                <td>
+                    @Html.ActionLink("Delete", "DeleteOrder", new { oid = item.OrderID }, new { @class = "Delbtn" }) <strong>|</strong>
+
+                    <div>
+                        @Html.ActionLink("Create Order Details", "AddDetailsOrder", new { oid = item.OrderID }, new { @class = "CreateOrderDetails" })<strong>|</strong>
+                    </div>
+                    @Html.ActionLink("View Order Details", "DetailsOrder", new { oid = item.OrderID }, new { @class = "ViewOrderDetails" }) <strong>|</strong>
+                    @Html.ActionLink("Edit Order", "EditOrder", new { oid = item.OrderID }, new { @class = "EditOrder" }) <strong>|</strong>
+                </td>
+            }
+
+        </tr>
+        }
+    }
+</table>
+
+<br />
+<br />
+

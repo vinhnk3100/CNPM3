@@ -1,0 +1,198 @@
+﻿@model IEnumerable<Computer_Shop.Models.Product>
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<body>
+
+    @*Start All Title Box*@
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Shop</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active">Shop</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*End All Title Box*@
+
+    <!-- Start Shop Page !-->
+     <div class="shop-box-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                    <div class="right-product-box">
+                        <div class="product-item-filter row">
+                            <div class="col-12 col-sm-8 text-center text-sm-left">
+                            </div>
+                            <div class="col-12 col-sm-4 text-center text-sm-right">
+                                <ul class="nav nav-tabs ml-auto">
+                                    <li>
+                                        <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i class="fa fa-th"></i> </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="#list-view" data-toggle="tab"> <i class="fa fa-list-ul"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="product-categorie-box">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                    <div class="row">
+                                        @{
+                                            foreach (Computer_Shop.Models.Product x in Model)
+                                            {
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">Hot</p>
+                                                            </div>
+                                                            <img src="@x.Image1"  width="250" height="280"/>
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="/Home/Product?id=@x.Product_ID" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                                        @if (Session["role"] == "admin")
+                                                                        {
+                                                                            <li style="background-color:red"><a href="/Home/DeleteProduct?id=@x.Product_ID" data-toggle="tooltip" data-placement="right" title="Delete"><i class="far fa-eject"></i></a></li>
+                                                                            <li style="background-color:green"><a href="/Home/EditProduct?id=@x.Product_ID" data-toggle="tooltip" data-placement="right" title="Edit"><i class="far fa-plus-square"></i></a></li>
+                                                                        }
+
+                                                                    </ul>
+                                                                    <a class="cart hvr-hover1" style="background-color:black" href="#">Add to Cart</a>
+                                                                </div>
+                                                        </div>
+                                                        <div class="why-text">
+                                                            <h4>@x.Product_Name</h4>
+                                                            <h5 class="hvr-hover1" style="background-color:black">@x.Price Đ</h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="list-view">
+                                    @{
+                                        foreach (Computer_Shop.Models.Product x in Model)
+                                        {
+                                            <div class="list-view-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+                                                                <div class="type-lb">
+                                                                    <p class="new">New</p>
+                                                                </div>
+                                                                <img src="@x.Image1" class="img-fluid" alt="Image">
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                                    </ul>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                        <div class="why-text">
+                                                            <h4>@x.Product_Name</h4>
+                                                            <h5> @x.Price Đ</h5>
+                                                            <p>
+                                                                @x.Description
+                                                            </p>
+                                                            <a class="btn hvr-hover1" style="background-color:lightgray" href="#"><strong>Add to cart</strong></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                    <div class="product-categori">
+                        <div class="search-product">
+                            <form action="#">
+                                <input class="form-control" placeholder="Search here..." type="text">
+                                <button type="submit"> <i class="fa fa-search"></i> </button>
+                            </form>
+                        </div>
+                        <div class="filter-sidebar-left">
+                            <div class="title-left">
+                                <h3>Categories</h3>
+                            </div>
+                            <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                                <div class="list-group-collapse sub-men">
+                                    <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
+                                        Laptop <small class="text-muted"></small>
+                                    </a>
+                                    <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action active">Laptop Gaming <small class="text-muted">(50)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Business Laptop <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Office Laptop <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Laptop with VGA <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Components and Laptop Accessories <small class="text-muted">(20)</small></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="list-group-collapse sub-men">
+                                    <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">
+                                        Accesories
+                                        <small class="text-muted"></small>
+                                    </a>
+                                    <div class="collapse" id="sub-men2" data-parent="#list-group-men">
+                                        <div class="list-group">
+                                            <a href="#" class="list-group-item list-group-item-action">Keyboard <small class="text-muted">(10)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Mouse <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Headphones <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Chairs <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Desktop <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Console <small class="text-muted">(20)</small></a>
+                                            <a href="#" class="list-group-item list-group-item-action">Module <small class="text-muted">(20)</small></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-price-left">
+                            <div class="price-box-slider">
+                                <div id="slider-range"></div>
+                                <p>
+                                    <input type="text" id="amount" readonly style="border:0; color:#fbb714; font-weight:bold;">
+                                    <button class="btn hvr-hover" type="submit">Filter</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Shop Page -->
+
+
+</body>
+
+</html>

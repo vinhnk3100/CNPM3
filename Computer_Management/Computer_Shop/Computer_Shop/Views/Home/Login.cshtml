@@ -1,0 +1,32 @@
+﻿@model Computer_Shop.Models.Account
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="title-left">
+    <strong style="font-size:60px">Account Login </strong>
+</div>
+
+    @*method="post" để giấu thông tin người dùng show lên inspect element
+        action="../" để truyển tham số về controller*@
+<div>
+    <form action="/Home/Login" method="post" id="formLogin" style="text-align:center">
+        <div>
+            <div class="form-group col-md-4" style="margin-left:510px">
+                <label for="InputUsername" class="mb-0" style="font-size:40px"><strong>Username</strong></label>
+                <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter Username" style="font-size:30px;background-color:lightgrey">
+            </div>
+        </div>
+        <div>
+            <div class="form-group col-md-4" style="margin-left:510px">
+                <label for="InputPassword" class="mb-0" style="font-size:40px"><strong>Password</strong></label>
+                <input type="password" class="form-control" id="Password" name="Password" placeholder="Password" style="font-size:30px;background-color:lightgrey">
+            </div>
+            <div class="" style="font-size:30px;color:red">@ViewBag.Message</div>
+        </div>
+        <button type="submit" class="btn hvr-hover" style="background-color:deepskyblue;border-radius:5px;color:white;font-size:24px">Login</button>
+    </form>
+</div>
+
+<br />

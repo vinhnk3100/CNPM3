@@ -1,0 +1,84 @@
+﻿@model Computer_Shop.Models.Customer
+
+@{
+    ViewBag.Title = "ViewCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewCustomer</h2>
+
+@using (Html.BeginForm("ViewCustomer","Home",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Customer</h4>
+    <hr />
+
+    @*================= Change Fullname =============================*@
+    <div class="form-group col-md-4">
+        Current Fullname :
+        <input class="form-control text-box single-line" id="Fullname" name="Fullname" type="text" value="@Html.ValueFor(m=>m.Customer_Name)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Fullname :
+        <input class="form-control text-box single-line" id="NewFullname" name="NewFullname" type="text" value="@Html.ValueFor(m=>m.Customer_Name)">
+    </div>
+
+    <br />
+
+    @*================= Change Phonenumber =============================*@
+    <div class="form-group col-md-4">
+        Current Phonenumber :
+        <input class="form-control text-box single-line" id="Phonenumber" name="Phonenumber" type="text" value="@Html.ValueFor(m=>m.Phonenumber)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Phonenumber :
+        <input class="form-control text-box single-line" id="NewPhonenumber" name="NewPhonenumber" type="text" value="@Html.ValueFor(m=>m.Phonenumber)">
+    </div>
+
+    <br />
+
+    @*================= Change Email =============================*@
+    <div class="form-group col-md-4">
+        Current Email :
+        <input class="form-control text-box single-line" id="Email" name="Email" type="text" value="@Html.ValueFor(m=>m.Email)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Email :
+        <input class="form-control text-box single-line" id="NewEmail" name="NewEmail" type="text" value="@Html.ValueFor(m=>m.Email)">
+    </div>
+
+    <br />
+
+    @*================= Change Address =============================*@
+    <div class="form-group col-md-4">
+        Current Address :
+        <input class="form-control text-box single-line" id="Address" name="Address" type="text" value="@Html.ValueFor(m=>m.Address)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Address :
+        <input class="form-control text-box single-line" id="NewAddress" name="NewAddress" type="text" value="@Html.ValueFor(m=>m.Address)">
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Customer")
+</div>

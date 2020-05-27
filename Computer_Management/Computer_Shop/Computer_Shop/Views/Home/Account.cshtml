@@ -1,0 +1,64 @@
+﻿@model Computer_Shop.Models.Account
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .col-md-12
+    {
+        text-align:center
+    }
+
+</style>
+
+@using (Html.BeginForm("Account", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4 style="font-size:45px;padding:15px;margin:0px;text-align:left">Account Infomation</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UserID)
+
+    <strong class="form-group" style="font-size:35px">
+        @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4" style="font-size:36px;font-family:'Times New Roman'">
+            <input class="form-control text-box single-line" id="UserID" name="UserID" type="text" value="@Html.ValueFor(m=>m.UserID)" readonly style="font-size:24px">
+            @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+        </div>
+    </strong>
+
+    <strong class="form-group" style="font-size:35px">
+        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4" style="font-size:36px;font-family:'Times New Roman'">
+            <input class="form-control text-box single-line" id="UserName" name="UserName" type="text" value="@Html.ValueFor(m=>m.UserName)" readonly style="font-size:24px">
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </div>
+    </strong>
+
+    <strong class="form-group" style="font-size:35px">
+        @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4" style="font-size:36px;font-family:'Times New Roman'">
+            <input class="form-control text-box single-line" id="Role" name="Role" type="text" value="@Html.ValueFor(m=>m.Role)" readonly style="font-size:24px">
+            @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
+        </div>
+    </strong>
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-4" style="font-size:20px;font-family:'Times New Roman'">
+            <a href="/Home/Index">
+                <input class="hvr-hover" type="button" id="sf_submit" value="Back">
+            </a>
+            <a href="/Home/Password">
+                <input class="hvr-hover" type="button" id="sf_submit" value="Change password">
+            </a>
+            <a href="/Home/ViewAccount?id=@Session["uid"]">
+                <input class="hvr-hover" type="button" id="sf_submit" value="View Information">
+            </a>
+        </div>
+    </div>
+
+</div>
+}

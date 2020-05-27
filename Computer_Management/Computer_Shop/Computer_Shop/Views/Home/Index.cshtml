@@ -1,0 +1,362 @@
+﻿@{@model IEnumerable<Computer_Shop.Models.Product>
+ViewBag.Title = "Index";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Start Slider -->
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img src="~/Content/Shop/images/banner_RTX.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Computer Shop</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover1" style="background-color:black;border:2px solid white" href="#">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="~/Content/Shop/images/banner_Predator.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Computer Shop</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover1" style="background-color:black;border:2px solid white" href="#">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="~/Content/Shop/images/banner_AsusMS.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> Computer Shop</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover1" style="background-color:black;border:2px solid white" href="#">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End Slider -->
+<!-- Start Categories  -->
+<div class="categories-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Shop/images/Intel_chip_MADE.jpg" alt="" />
+                    <a class="btn hvr-hover" href="https://www.intel.vn/content/www/vn/vi/homepage.html" style="background-color:dodgerblue">Intel</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Shop/images/AMD_Made.jpg" alt="" />
+                    <a class="btn hvr-hover" href="https://www.amd.com/en" style="background-color:orangered">AMD</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/Shop/images/RTX_Made.jpg" alt="" />
+                    <a class="btn hvr-hover" href="https://www.nvidia.com/en-us/geforce/" style="background-color:forestgreen">Geforce</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+<!-- Start Products  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Keyboards & Mouse</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="special-menu text-center">
+                    <div class="button-group filter-button-group">
+                        <button class="hvr-hover1" style="background-color:black" data-filter="*">All</button>
+                        <button data-filter=".top-featured" style="background-color:black" class="hvr-hover1">Top featured</button>
+                        <button data-filter=".best-seller" style="background-color:black" class="hvr-hover1">Best seller</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row special-list">
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="sale">Sale</p>
+                        </div>
+                        <img src="~/Content/Shop/images/Logitech_G102.jpg" class="img-fluid" alt="Image">
+                        <div class="mask-icon">
+                            <ul>
+                                <li><a href="/Home/Product?id=6" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                            </ul>
+                            <a class="cart hvr-hover1" style="background-color:black;border:2px solid white" href="#">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4>Logitech G102 Prodigy RGB</h4>
+                        <h5 class="hvr-hover1" style="background-color:black"> 320,000đ</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 special-grid top-featured">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="new">New</p>
+                        </div>
+                        <img src="~/Content/Shop/images/Corsair_Keyboard_Mouse.jpg" class="img-fluid" alt="Image">
+                        <div class="mask-icon">
+                            <ul>
+                                <li><a href="/Home/Product?id=5" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                            </ul>
+                            <a class="cart hvr-hover1" style="background-color:black;border:2px solid white" href="#">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4>Corsair K63 Wireless Lapboard</h4>
+                        <h5 class="hvr-hover1" style="background-color:black"> 1,790,000đ</h5>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 special-grid top-featured">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="sale">Sale</p>
+                        </div>
+                        <img src="https://product.hstatic.net/1000026716/product/a.png" class="img-fluid" alt="Image">
+                        <div class="mask-icon">
+                            <ul>
+                                <li><a href="/Home/Product?id=3" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                            </ul>
+                            <a class="cart hvr-hover1" style="background-color:black;border:2px solid white" href="#">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4>Razer DeathAdder Elite</h4>
+                        <h5 class="hvr-hover1" style="background-color:black"> 1,199,000đ</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 special-grid best-seller">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <div class="type-lb">
+                            <p class="sale">Sale</p>
+                        </div>
+                        <img src="https://product.hstatic.net/1000026716/product/gearvn_logitechg213_5_c33273e553d3448bbec26c521965d89b.png" class="img-fluid" alt="Image">
+                        <div class="mask-icon">
+                            <ul>
+                                <li><a href="/Home/Product?id=3" data-toggle="tooltip" data-placement="right" title="View" ><i class="fas fa-eye" ></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                            </ul>
+                            <a class="cart hvr-hover1" style="background-color:black;border:2px solid white" href="#">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4>Logitech G213 Keyboard</h4>
+                        <h5 class="hvr-hover1" style="background-color:black"> 799,999đ</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Products  -->
+<!-- Start Blog  -->
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Business Laptop</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img class="img-fluid" src="~/Content/Shop/images/blog_ZenbookProDou.jpg" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3>ASUS Zenbook Pro Dou</h3>
+                            <p>
+                                Take your creativity and productivity to the next level with ASUS ZenBook Pro Duo!
+                                Designed to bring you the most efficient workflow,
+                                the unique design of this machine has the full-length 4K ASUS ScreenPad ™ Plus 4K.
+                                Wide compatible smoothly with the UHD 4K OLED display. Take full advantage of
+                                your creative power has never been this easy.
+                            </p>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                            <li><a href="https://www.asus.com/vn/Laptops/ZenBook-Pro-Duo-UX581GV/"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#"><i class="far fa-comments"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img class="img-fluid" src="~/Content/Shop/images/blog_AcerSwift7.jpg" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3>ACER Swift 7</h3>
+                            <p>
+                                Elegance and efficiency find the perfect balance in the Swift 7, starting with its incredibly thin 9.95mm chassis.
+                                Looks and performance combine in a laptop that sets new standards in compact design.
+                                Savor the visuals of a 14” display in a smaller footprint thanks to this minimalist approach.
+                            </p>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                            <li><a href="https://www.acer.com/ac/en/US/content/series/swift7"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#"><i class="far fa-comments"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img class="img-fluid" src="~/Content/Shop/images/blog_HPspectrex360.jpg" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3>HP Spectre x360 Convertible</h3>
+                            <p>
+                                The HP Specter x360 laptop is a member of HP's most luxurious laptop product line. The device has a thin and light design with a thickness of only 13.6mm and a weight of only 1.26kg,
+                                cut from a single aluminum alloy block with computer programming with precision to the millimeter.
+                                The details of the machine are calculated to give users a powerful device with compact lines, elegant shaping and light structure.
+                                Backlit keyboard with large keys, long key travel and good bounce is sure to bring the most comfortable experience to the user.
+                            </p>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a href="#"><i class="far fa-heart"></i></a></li>
+                            <li><a href="https://www8.hp.com/vn/vi/campaigns/spectrex360/overview.html?jumpid=ps_gafn296qwi&gclid=EAIaIQobChMI47eV3Z-z6QIV7cEWBR1olg6yEAAYASAAEgKpWfD_BwE"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#"><i class="far fa-comments"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Blog  -->
+<!-- Start Instagram Feed  -->
+<div class="instagram-box">
+    <div class="main-instagram owl-carousel owl-theme">
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Dare_U_mouse.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Logictech_G903.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Leopold_FC980C_Black_Silent.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Noble_Chair_Hero_Series_Real_Leather.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/JBL_Quantum_ONE.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Focal_Stellia.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Sony_IER-Z1R.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Bose QuietComfort 35 II.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/Beats Solo3 Wireless Headphones.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="ins-inner-box">
+                <img src="~/Content/Shop/images/ROG Rapture GT-AX11000.jpg" alt="" />
+                <div class="hov-in">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Instagram Feed  -->

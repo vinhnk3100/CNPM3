@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Computer_Management_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_ID" />
+    </Key>
+    <Property Name="Customer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Customer_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phonenumber" Type="varchar" MaxLength="24" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="BirthDay" Type="date" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailsOrder">
+    <Key>
+      <PropertyRef Name="DetailsOrderID" />
+    </Key>
+    <Property Name="DetailsOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DoB" Type="datetime" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Salary" Type="money" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Create_Date" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Shipping_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Payment_Method" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Product ID" />
+    </Key>
+    <Property Name="Product ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Made in" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Brand" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Quantity" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Warranty Period" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Image1" Type="varchar(max)" />
+    <Property Name="Image2" Type="varchar(max)" />
+    <Property Name="Image3" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Computer_Management_System.dbo.AccountEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AccountEmployee">
+    <Key>
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="Email" />
+      <PropertyRef Name="DoB" />
+      <PropertyRef Name="Mobile" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="Salary" />
+      <PropertyRef Name="EmployeeID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Role" />
+    </Key>
+    <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DoB" Type="datetime" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Salary" Type="money" Nullable="false" />
+    <Property Name="EmployeeID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Computer_Management_System.dbo.AccountEmployeeCustomerOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AccountEmployeeCustomerOrder">
+    <Key>
+      <PropertyRef Name="Role" />
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="Customer_ID" />
+      <PropertyRef Name="Customer_Name" />
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="Create_Date" />
+      <PropertyRef Name="Shipping_Address" />
+      <PropertyRef Name="Status" />
+      <PropertyRef Name="Payment_Method" />
+    </Key>
+    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="FullName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Customer_ID" Type="int" Nullable="false" />
+    <Property Name="Customer_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="Create_Date" Type="datetime" Nullable="false" />
+    <Property Name="Shipping_Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Payment_Method" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Computer_Management_System.dbo.DetailsOrderProductsOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="DetailsOrderProductsOrder">
+    <Key>
+      <PropertyRef Name="DetailsOrderID" />
+      <PropertyRef Name="Product ID" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Product Name" />
+      <PropertyRef Name="Price" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="DetailsOrderID" Type="int" Nullable="false" />
+    <Property Name="Product ID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+    <Property Name="Product Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="Image1" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_DetailsOrder_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="DetailsOrder" Type="Self.DetailsOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="DetailsOrder">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailsOrder_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="DetailsOrder" Type="Self.DetailsOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Product ID" />
+      </Principal>
+      <Dependent Role="DetailsOrder">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employee_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Account">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_ID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Computer_Management_SystemModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailsOrder" EntityType="Self.DetailsOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AccountEmployee" EntityType="Self.AccountEmployee" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AccountEmployee].[FullName] AS [FullName], 
+    [AccountEmployee].[Email] AS [Email], 
+    [AccountEmployee].[DoB] AS [DoB], 
+    [AccountEmployee].[Mobile] AS [Mobile], 
+    [AccountEmployee].[City] AS [City], 
+    [AccountEmployee].[Salary] AS [Salary], 
+    [AccountEmployee].[EmployeeID] AS [EmployeeID], 
+    [AccountEmployee].[UserID] AS [UserID], 
+    [AccountEmployee].[UserName] AS [UserName], 
+    [AccountEmployee].[Role] AS [Role]
+    FROM [dbo].[AccountEmployee] AS [AccountEmployee]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AccountEmployeeCustomerOrder" EntityType="Self.AccountEmployeeCustomerOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AccountEmployeeCustomerOrder].[Role] AS [Role], 
+    [AccountEmployeeCustomerOrder].[FullName] AS [FullName], 
+    [AccountEmployeeCustomerOrder].[Customer_ID] AS [Customer_ID], 
+    [AccountEmployeeCustomerOrder].[Customer_Name] AS [Customer_Name], 
+    [AccountEmployeeCustomerOrder].[OrderID] AS [OrderID], 
+    [AccountEmployeeCustomerOrder].[Create_Date] AS [Create_Date], 
+    [AccountEmployeeCustomerOrder].[Shipping_Address] AS [Shipping_Address], 
+    [AccountEmployeeCustomerOrder].[Status] AS [Status], 
+    [AccountEmployeeCustomerOrder].[Payment_Method] AS [Payment_Method]
+    FROM [dbo].[AccountEmployeeCustomerOrder] AS [AccountEmployeeCustomerOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="DetailsOrderProductsOrder" EntityType="Self.DetailsOrderProductsOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DetailsOrderProductsOrder].[DetailsOrderID] AS [DetailsOrderID], 
+    [DetailsOrderProductsOrder].[Product ID] AS [Product ID], 
+    [DetailsOrderProductsOrder].[Quantity] AS [Quantity], 
+    [DetailsOrderProductsOrder].[Product Name] AS [Product Name], 
+    [DetailsOrderProductsOrder].[Price] AS [Price], 
+    [DetailsOrderProductsOrder].[OrderID] AS [OrderID], 
+    [DetailsOrderProductsOrder].[Image1] AS [Image1]
+    FROM [dbo].[DetailsOrderProductsOrder] AS [DetailsOrderProductsOrder]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DetailsOrder_Order" Association="Self.FK_DetailsOrder_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="DetailsOrder" EntitySet="DetailsOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailsOrder_Products" Association="Self.FK_DetailsOrder_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="DetailsOrder" EntitySet="DetailsOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employee_Account" Association="Self.FK_Employee_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Account" Association="Self.FK_Order_Account">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

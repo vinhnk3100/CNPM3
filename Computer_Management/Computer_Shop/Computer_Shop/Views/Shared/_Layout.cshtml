@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<!--LAYOUT CUA PROJECT-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Computer Shop</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/Content/Shop/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Content/Shop/images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/Shop/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Content/Shop/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Content/Shop/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/Shop/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Start Main Top -->
+    <div class="main-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @*==============================  Check if Login or Not   ===================*@
+                    @if (Session["uname"] == null)
+                    {
+                        <div class="login-box" style="font-size:16px">
+                            <div style="float:right">
+                                <a href="/Home/Login" class="login-box hvr-hover1" style="text-align:center;color:white;border:2px solid white;border-radius:5px">
+                                    Login
+                                </a>
+                            </div>
+                            @*<div style="float:right">
+                                <a href="/Home/Register" method="post">
+                                    <input type="submit" id="sf_submit" value="Register" style="border-radius:6px">
+                                </a>
+                            </div>*@
+                        </div>
+                    }
+                    
+                    else
+                    {
+                        <a href="/Home/Logout" style="text-align:center;color:white;border:2px solid white;border-radius:5px;margin-top:14px" class="login-box hvr-hover1" >
+                            Logout
+                        </a>
+                        <a href="/Home/My_account?id=@Session["uid"]">
+                            <div class="login-box hvr-hover1" style="font-size:16px;font-family:'Times New Roman';color:white;border:1px solid white;text-align:center;border-radius:5px;margin-top:14px">
+                                @Session["uname"]
+                            </div>
+                        </a>
+                    }
+
+                    <div class="text-slid-box">
+                        <div id="offer-box" class="carouselTicker">
+                            <ul class="offer-box">
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT80
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 10%! Shop Laptop
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 50% - 80% off on VGA
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT30
+                                </li>
+                                <li>
+                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Top -->
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="~/Home/Index"><img src="~/Content/Shop/images/logo.png" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item"><a class="nav-link" href="/Home/Index">Home</a></li>
+                        @*<li class="nav-item"><a class="nav-link" href="/Home/About">About Us</a></li>*@
+                        @if (Session["role"] != null && Session["role"].Equals("admin"))
+                        {
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle arrow" style="border-bottom:1px solid red" data-toggle="dropdown" href="#">Customer Management</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/AddCustomer">Add Customer</a></li>
+                                    <li><a href="/Home/Customer">View Customer</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle arrow" style="border-bottom:1px solid red" data-toggle="dropdown" href="/Home/User">User Management</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/Register">Add Employee</a></li>
+                                    <li><a href="/Home/Employee">View Employee</a></li>
+                                    <li><a href="/Home/User">View User</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle arrow" style="border-bottom:1px solid red" data-toggle="dropdown" href="/Home/Order">Order List</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/AddOrder">Add Order</a></li>
+                                    <li><a href="/Home/Order">View Order</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else if (Session["role"] != null && Session["role"].Equals("Salesman"))
+                        {
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle arrow" style="border-bottom:1px solid red" data-toggle="dropdown" href="/Home/Order">Order List</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Home/AddOrder">Add Order</a></li>
+                                    <li><a href="/Home/Order">View Order</a></li>
+                                </ul>
+                            </li>
+                        }
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle arrow" style="border-bottom:1px solid red" data-toggle="dropdown">Product</a>
+                            <ul class="dropdown-menu">
+                                @if (Session["role"] != null && Session["role"].Equals("admin"))
+                                {
+                                    <li><a href="/Home/AddProduct">Add Product</a></li>
+                                }
+                                else if (Session["role"] != null && Session["role"].Equals("Storage Manager"))
+                                {
+                                    <li><a href="/Home/AddProduct">Add Product</a></li>
+                                }
+                                <li><a href="/Home/Shop">View Product</a></li>
+                                @*<li><a href="/Home/Cart">Cart</a></li>
+                <li><a href="/Home/Checkout">Checkout</a></li>*@
+                                @*<li><a href="/Home/Wishlist">Wishlist</a></li>*@
+                            </ul>
+                        </li>
+                        @*<li class="nav-item"><a class="nav-link" href="/Home/Contact">Contact Us</a></li>*@
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+                <!-- Start Atribute Navigation -->
+                <div class="attr-nav">
+                    <ul>
+                        @*<li class="search"><a href="#"><i class="fa fa-search"></i></a></li>*@
+                        <li class="side-menu">
+                            @*<a href="/Home/Cart">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">3</span>
+                                <p>My Cart</p>
+                            </a>*@
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Atribute Navigation -->
+            </div>
+            <!-- Start Side Menu -->
+            <div class="side">
+                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                <li class="cart-box">
+                    <ul class="cart-list">
+                        <li>
+                            <a href="#" class="photo"><img src="~/Content/Shop/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Delica omtantur </a></h6>
+                            <p>1x - <span class="price">$80.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="~/Content/Shop/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Omnes ocurreret</a></h6>
+                            <p>1x - <span class="price">$60.00</span></p>
+                        </li>
+                        <li>
+                            <a href="#" class="photo"><img src="~/Content/Shop/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                            <h6><a href="#">Agam facilisis</a></h6>
+                            <p>1x - <span class="price">$40.00</span></p>
+                        </li>
+                        <li class="total">
+                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <!-- End Side Menu -->
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+    <!-- Start Top Search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Top Search -->
+    @RenderBody()
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Business Time</h3>
+                            <ul class="list-time">
+                                <li>Monday - Friday: 08.00am to 05.00pm</li>
+                                <li>Saturday: 10.00am to 08.00pm</li>
+                                <li>Sunday: <span>Closed</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Newsletter</h3>
+                            <form class="newsletter-box">
+                                <div class="form-group">
+                                    <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <button class="btn hvr-hover1" style="background-color:black;border:2px solid" type="submit">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Social Media</h3>
+                            <p>Social media website</p>
+                            <ul>
+                                <li><a href="https://www.facebook.com/"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="https://twitter.com/explore"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.whatsapp.com/?lang=vi"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>About Computer Shop</h4>
+                            <p>This computer shop is just a prototype version. Cause limit of time we cant improve further.</p>
+                            <p>This is from our vision of computer shop.Thank you for visiting by.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Customer Service</a></li>
+                                <li><a href="#">Our Sitemap</a></li>
+                                <li><a href="#">Terms &amp; Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Delivery Information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Contact Us</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>19 Đường Nguyễn Hữu Thọ, Tân Hưng, Quận 7, Hồ Chí Minh<br>758307</p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:0905854785">0905854785</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">
+            All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+            <a href="https://html.design/">html design</a>
+        </p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="~/Content/Shop/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/Shop/js/popper.min.js"></script>
+    <script src="~/Content/Shop/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/Content/Shop/js/jquery.superslides.min.js"></script>
+    <script src="~/Content/Shop/js/bootstrap-select.js"></script>
+    <script src="~/Content/Shop/js/inewsticker.js"></script>
+    <script src="~/Content/Shop/js/bootsnav.js."></script>
+    <script src="~/Content/Shop/js/images-loded.min.js"></script>
+    <script src="~/Content/Shop/js/isotope.min.js"></script>
+    <script src="~/Content/Shop/js/owl.carousel.min.js"></script>
+    <script src="~/Content/Shop/js/baguetteBox.min.js"></script>
+    <script src="~/Content/Shop/js/form-validator.min.js"></script>
+    <script src="~/Content/Shop/js/contact-form-script.js"></script>
+    <script src="~/Content/Shop/js/custom.js"></script>
+</body>
+
+</html>

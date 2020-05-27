@@ -1,0 +1,114 @@
+﻿@model Computer_Shop.Models.Employee
+@{
+    ViewBag.Title = "ViewEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .col-md-12 {
+        text-align: center
+    }
+</style>
+
+@using (Html.BeginForm("ViewEmployee", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4 style="font-size:45px;padding-left:15px">Account Infomation</h4>
+    <hr />
+
+    @*================= Change Fullname =============================*@
+    <div class="form-group col-md-4">
+        Current Fullname :
+        <input class="form-control text-box single-line" id="Fullname" name="Fullname" type="text" value="@Html.ValueFor(m=>m.FullName)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Fullname :
+        <input class="form-control text-box single-line" id="NewFullname" name="NewFullname" type="text" value="@Html.ValueFor(m=>m.FullName)">
+    </div>
+
+    <br />
+
+    @*================= Change Email =============================*@
+    <div class="form-group col-md-4">
+        Current Email :
+        <input class="form-control text-box single-line" id="Email" name="Email" type="text" value="@Html.ValueFor(m=>m.Email)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Email :
+        <input class="form-control text-box single-line" id="NewEmail" name="NewEmail" type="text" value="@Html.ValueFor(m=>m.Email)">
+    </div>
+
+    <br />
+
+    @*================= Change Date of Birth =============================*@
+    <div class="form-group col-md-4">
+        Current Date of Birth :
+        <input class="form-control text-box single-line" id="DoB" name="DoB" type="text" value="@Html.ValueFor(m=>m.DoB)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Date of Birth :
+        <input class="form-control text-box single-line" id="NewDoB" name="NewDoB" type="text" value="@Html.ValueFor(m=>m.DoB)">
+    </div>
+
+    @*================= Change Mobile =============================*@
+    <div class="form-group col-md-4">
+        Current Mobile :
+        <input class="form-control text-box single-line" id="Mobile" name="Mobile" type="text" value="@Html.ValueFor(m=>m.Mobile)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New Mobile :
+        <input class="form-control text-box single-line" id="NewMob" name="NewMob" type="text" value="@Html.ValueFor(m=>m.Mobile)">
+    </div>
+
+    <br />
+    @*================= Change City =============================*@
+    <div class="form-group col-md-4">
+        Current City :
+        <input class="form-control text-box single-line" id="City" name="City" type="text" value="@Html.ValueFor(m=>m.City)" readonly
+               style="background-color:forestgreen;color:white;text-align:center">
+    </div>
+
+    <div class="form-group col-md-4">
+        *New City :
+        <input class="form-control text-box single-line" id="NewCiTy" name="NewCiTy" type="text" value="@Html.ValueFor(m=>m.City)">
+    </div>
+
+    <br />
+
+    @if (Session["role"].Equals("admin"))
+    {
+        @*================= Change Salary =============================*@
+        <div class="form-group col-md-4">
+            Current Salary :
+            <input class="form-control text-box single-line" id="Salary" name="Salary" type="number" value="@Html.ValueFor(m=>m.Salary)" readonly
+                   style="background-color:forestgreen;color:white;text-align:center">
+        </div>
+
+        <div class="form-group col-md-4">
+            *New Salary :
+            <input class="form-control text-box single-line" id="NewSalary" name="NewSalary" type="number" value="@Html.ValueFor(m=>m.Salary)">
+        </div>
+    }
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+    <div style="font-size:24px;padding-left:15px">
+        @Html.ActionLink("Back to List", "Employee")
+    </div>
+    <br />
+
+</div>
+}

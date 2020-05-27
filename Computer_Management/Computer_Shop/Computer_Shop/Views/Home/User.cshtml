@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1 style="text-align:center;font-size:64px">
+    <strong>
+        User Management
+    </strong>
+</h1>
+
+<hr />
+
+
+<div class="row" style="padding-bottom:30px;text-align:center">
+    @if (Session["role"].Equals("admin"))
+    {
+        <div class="col-md-4">
+            <a class="hvr-hover1" href="/Home/Admin" style="border-radius:200px;border:3px solid red;background-color:black">
+                <img src="https://file.vforum.vn/hinh/2014/11/admin.png" style="width:250px;height:250px" />
+            </a>
+
+            <div>
+                <a href="/Home/Admin" class="hvr-hover1" style="font-size:30px;border-radius:6px;background-color:black;color:white;margin-top:20px">
+                    Admin
+                </a>
+            </div>
+        </div>
+    }
+
+
+    <div class="col-md-4">
+        <a href="/Home/Employee" style="border:3px solid gold;border-radius:200px;background-color:orange" class="hvr-hover1">
+            <img src="https://cdn3.iconfinder.com/data/icons/project-management-50/50/51-512.png" style="width:250px;height:250px" />
+        </a>
+        <div>
+            <div>
+                <a href="/Home/Employee" class="hvr-hover1" style="font-size:30px;border-radius:6px;margin-top:20px;color:white;background-color:goldenrod">
+                    Employee
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/Home/Customer" class="hvr-hover1" style="border:3px solid green;border-radius:200px;background-color:limegreen">
+            <img src="https://i.ya-webdesign.com/images/customer-icon-png-3.png" style="width:250px;height:250px" />
+        </a>
+
+        <div>
+            <div>
+                <a href="/Home/Customer" class="hvr-hover" style="font-size:30px;border-radius:6px;margin-top:20px;color:white">
+                    Customer
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
